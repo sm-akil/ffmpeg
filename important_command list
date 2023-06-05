@@ -1,1 +1,39 @@
 
+#source link: https://www.tecmint.com/ffmpeg-commands-for-video-audio-and-image-conversion-in-linux/
+
+#Get Video File Information
+$ ffmpeg -i video.flv -hide_banner
+
+#Split a video into images
+$ ffmpeg -i video.flv image%d.jpg
+
+#Convert images into a video
+$ ffmpeg -f image2 -i image%d.jpg imagestovideo.mpg
+
+#Convert a video into mp3 format
+$ ffmpeg -i video.flv -vn -ar 44100 -ac 2 -ab 192 -f mp3 audio.mp3
+
+    note: 
+        vn: helps to disable video recording during the conversion.
+        ar: helps you set audio sampling rate in Hz.
+        ab: set the audio bitrate.
+        ac: to set the number of audio channels.
+        -f: format.
+        
+#Covert flv video file to mpg format
+$ ffmpeg -i video.flv video.mpg
+
+#Convert video into animated gif
+$ ffmpeg -i video.flv animated.gif.mp4
+
+#Extract audio from video file
+$ ffmpeg -i video1.avi -vn -ar 44100 -ac 2 -ab 192 -f mp3 audio3.mp3
+
+#Mix a video and audio together
+$ ffmpeg -i audio.mp3 -i video.avi video_audio_mix.mpg
+
+#Compare/Test Video and Audio Quality
+$ ffplay video1.mp4
+
+#Convert avi video file to mpeg
+$ ffmpeg -i video.avi -target pal-dvd -ps 2000000000 -aspect 16:9 video.mpeg
